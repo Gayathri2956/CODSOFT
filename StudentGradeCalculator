@@ -1,0 +1,56 @@
+import java.util.Scanner;
+public class StudentGradeCalculator {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+        System.out.println("STUDENT GRADE CALCULATOR ");
+        System.out.print("Enter Student Name: ");
+        String name = sc.nextLine();
+        System.out.print("Enter Number of Subjects: ");
+        int subjects = sc.nextInt();
+        int total = 0;
+        for (int i = 1; i <= subjects; i++) {
+            int mark;
+        do {
+                System.out.print("Enter marks for Subject " + i + " (0-100): ");
+                mark = sc.nextInt();
+
+                if (mark < 0 || mark > 100) {
+                    System.out.println("Invalid Marks! Enter between 0 and 100.");
+                }
+
+            } while (mark < 0 || mark > 100);
+
+            total += mark;
+        }
+        double average = (double) total /subjects;
+        String grade;
+        String remark;
+        if (average >= 90) {
+            grade = "A+";
+            remark = "Outstanding";
+        } else if (average >= 80) {
+            grade = "A";
+            remark = "Excellent";
+        } else if (average >= 70) {
+            grade = "B";
+            remark = "Very Good";
+        } else if (average >= 60) {
+            grade = "C";
+            remark = "Good";
+        } else if (average >= 50) {
+            grade = "D";
+            remark = "Average";
+        } else {
+            grade = "F";
+            remark = "Need Improvement";
+        }
+        System.out.println("\n*** RESULT ***");
+        System.out.println("Student Name : " + name);
+        System.out.println("Total Marks  : " + total);
+        System.out.println("Percentage   : " + String.format("%.2f", average) + "%");
+        System.out.println("Grade        : " + grade);
+        System.out.println("Remark       : " + remark);
+        sc.close();
+    }
+}
